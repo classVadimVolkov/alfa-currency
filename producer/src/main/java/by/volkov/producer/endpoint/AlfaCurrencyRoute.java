@@ -1,4 +1,4 @@
-package by.volkov.producer.endpoints;
+package by.volkov.producer.endpoint;
 
 import by.volkov.producer.service.SendingService;
 import by.volkov.producer.record.RateExportMessage;
