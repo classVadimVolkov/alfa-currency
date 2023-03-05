@@ -1,5 +1,6 @@
 package by.volkov.consumer.record;
 
+import by.volkov.consumer.entity.Currency;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -16,7 +17,4 @@ public class RateImportMessage {
     private Integer quantity;
     private String name;
     private LocalDate date;
-
-    // add this field to VM afterwards
-    // private LocalDateTime createdAt;
 }

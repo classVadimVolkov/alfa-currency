@@ -1,7 +1,9 @@
 package by.volkov.consumer.service;
 
 import by.volkov.consumer.config.KafkaConsumerConfig;
+import by.volkov.consumer.mapper.RateMapper;
 import by.volkov.consumer.record.RateImportMessage;
+import by.volkov.consumer.repository.RateRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -17,8 +19,9 @@ import java.time.Duration;
 public class RecordConsumerService implements ConsumerService {
 
     private static boolean isOpen = true;
+    private static final Duration timeout = Duration.ofSeconds(5);
     private final KafkaConsumerConfig consumerConfig;
-    private final Duration timeout = Duration.ofSeconds(5);
+    private final RateService rateService;
 
     @EventListener(ApplicationReadyEvent.class)
     @Override
@@ -33,6 +36,8 @@ public class RecordConsumerService implements ConsumerService {
                     log.info("key=" + record.key());
                     log.info("value=" + record.value());
                     log.info("Message has been received");
+
+                    rateService.save(record.value());
                 });
            }
         }
