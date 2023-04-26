@@ -3,13 +3,6 @@ package by.volkov.consumer.vm;
 import by.volkov.consumer.entity.Currency;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import java.time.LocalDate;
 
 @Data
