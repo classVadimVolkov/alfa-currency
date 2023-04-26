@@ -26,8 +26,8 @@
 
     <modules>
         <module>account</module>
-        <module>producer</module>
-        <module>consumer</module>
+        <module>kafka-producer</module>
+        <module>kafka-consumer</module>
     </modules>
 
     <dependencies>

@@ -10,6 +10,6 @@
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>consumer</artifactId>
+    <artifactId>kafka-consumer</artifactId>
 
 </project>
