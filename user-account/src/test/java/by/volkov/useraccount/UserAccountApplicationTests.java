@@ -1,10 +1,10 @@
-package by.volkov.account;
+package by.volkov.useraccount;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AccountApplicationTests {
+class UserAccountApplicationTests {
 
     @Test
     void contextLoads() {

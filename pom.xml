@@ -25,7 +25,7 @@
     </properties>
 
     <modules>
-        <module>account</module>
+        <module>user-account</module>
         <module>kafka-producer</module>
         <module>kafka-consumer</module>
     </modules>

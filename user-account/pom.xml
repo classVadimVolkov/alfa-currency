@@ -10,6 +10,6 @@
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>account</artifactId>
+    <artifactId>user-account</artifactId>
 
 </project>
