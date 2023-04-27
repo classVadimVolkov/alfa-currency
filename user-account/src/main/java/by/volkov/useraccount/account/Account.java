@@ -26,14 +26,13 @@ import java.math.BigDecimal;
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account-gen")
-    @SequenceGenerator(name = "account-gen", sequenceName = "account-seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_gen")
+    @SequenceGenerator(name = "account_gen", sequenceName = "account_seq", allocationSize = 1)
     private Long id;
 
     @Column
     private BigDecimal balance = BigDecimal.ZERO;
 
-    @Column
     @Enumerated(EnumType.STRING)
     private Currency currency;
 
