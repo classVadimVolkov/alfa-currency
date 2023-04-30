@@ -1,6 +1,6 @@
 package by.volkov.useraccount.user;
 
-import by.volkov.useraccount.account.Account;
+import by.volkov.useraccount.account.entity.Account;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
