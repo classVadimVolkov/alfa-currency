@@ -1,7 +1,9 @@
 package by.volkov.consumer.config;
 
 import by.volkov.consumer.record.RateImportMessage;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -16,13 +18,14 @@ import java.util.Map;
 
 @Configuration
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class KafkaConsumerConfig {
 
-    private static final String GROUP_ID_CONFIG = "rate-group";
-    private static final String TOPIC_NAME = "rate";
+    static final String GROUP_ID_CONFIG = "rate-group";
+    static final String TOPIC_NAME = "rate";
 
     @Value("${spring.kafka.bootstrap-servers}")
-    private String bootstrapServers;
+    String bootstrapServers;
 
     @Bean
     public KafkaConsumer<String, RateImportMessage> kafkaConsumer() {

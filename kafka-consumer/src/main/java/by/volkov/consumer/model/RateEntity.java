@@ -1,6 +1,8 @@
-package by.volkov.consumer.entity;
+package by.volkov.consumer.model;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,39 +18,40 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "rate")
 @Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class RateEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rate-gen")
     @SequenceGenerator(name = "rate-gen", sequenceName = "rate_seq", allocationSize = 1)
-    private Long id;
+    Long id;
 
     @Column(name = "sell_rate", nullable = false)
-    private Double sellRate;
+    Double sellRate;
 
     @Column(name = "sell_iso", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Currency sellIso;
+    Currency sellIso;
 
     @Column(name = "sell_code", nullable = false)
-    private Integer sellCode;
+    Integer sellCode;
 
     @Column(name = "buy_rate", nullable = false)
-    private Double buyRate;
+    Double buyRate;
 
     @Column(name = "buy_iso", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Currency buyIso;
+    Currency buyIso;
 
     @Column(name = "buy_code", nullable = false)
-    private Integer buyCode;
+    Integer buyCode;
 
     @Column(nullable = false)
-    private Integer quantity;
+    Integer quantity;
 
     @Column(name = "currency_name")
-    private String currencyName;
+    String currencyName;
 
     @Column(name = "rate_date", nullable = false)
-    private LocalDate rateDate;
+    LocalDate rateDate;
 }

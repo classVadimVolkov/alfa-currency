@@ -1,14 +1,17 @@
 package by.volkov.useraccount.account.vm;
 
-import by.volkov.useraccount.account.entity.Currency;
+import by.volkov.useraccount.account.model.Currency;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 
 @Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AccountVm {
 
-    private Long id;
-    private BigDecimal balance;
-    private Currency currency;
+    Long id;
+    BigDecimal balance;
+    Currency currency;
 }

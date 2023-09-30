@@ -1,8 +1,9 @@
-package by.volkov.useraccount.account.entity;
+package by.volkov.useraccount.account.model;
 
 import by.volkov.useraccount.user.User;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,22 +22,22 @@ import java.math.BigDecimal;
 
 @Entity
 @Table
-@Getter
-@Setter
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_gen")
     @SequenceGenerator(name = "account_gen", sequenceName = "account_seq", allocationSize = 1)
-    private Long id;
+    Long id;
 
     @Column
-    private BigDecimal balance = BigDecimal.ZERO;
+    BigDecimal balance = BigDecimal.ZERO;
 
     @Enumerated(EnumType.STRING)
-    private Currency currency;
+    Currency currency;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    private User user;
+    User user;
 }

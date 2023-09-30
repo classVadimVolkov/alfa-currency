@@ -1,10 +1,10 @@
 package by.volkov.consumer.service;
 
 import by.volkov.consumer.config.KafkaConsumerConfig;
-import by.volkov.consumer.mapper.RateMapper;
 import by.volkov.consumer.record.RateImportMessage;
-import by.volkov.consumer.repository.RateRepository;
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -14,14 +14,16 @@ import org.springframework.stereotype.Service;
 import java.time.Duration;
 
 @Slf4j
-@AllArgsConstructor
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Service
 public class RecordConsumerService implements ConsumerService {
 
-    private static boolean isOpen = true;
-    private static final Duration timeout = Duration.ofSeconds(5);
-    private final KafkaConsumerConfig consumerConfig;
-    private final RateService rateService;
+    static boolean isOpen = true;
+    static final Duration timeout = Duration.ofSeconds(5);
+
+    final KafkaConsumerConfig consumerConfig;
+    final RateService rateService;
 
     @EventListener(ApplicationReadyEvent.class)
     @Override

@@ -1,4 +1,4 @@
-package by.volkov.consumer.entity;
+package by.volkov.consumer.model;
 
 public enum Currency {
     USD,

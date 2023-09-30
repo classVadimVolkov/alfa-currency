@@ -1,6 +1,6 @@
 package by.volkov.consumer.repository;
 
-import by.volkov.consumer.entity.RateEntity;
+import by.volkov.consumer.model.RateEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

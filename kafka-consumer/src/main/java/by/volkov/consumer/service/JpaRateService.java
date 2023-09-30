@@ -1,6 +1,6 @@
 package by.volkov.consumer.service;
 
-import by.volkov.consumer.entity.RateEntity;
+import by.volkov.consumer.model.RateEntity;
 import by.volkov.consumer.record.RateImportMessage;
 import by.volkov.consumer.vm.RateVM;
 

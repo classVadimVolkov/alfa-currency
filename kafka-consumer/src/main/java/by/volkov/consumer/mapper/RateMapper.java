@@ -1,6 +1,6 @@
 package by.volkov.consumer.mapper;
 
-import by.volkov.consumer.entity.RateEntity;
+import by.volkov.consumer.model.RateEntity;
 import by.volkov.consumer.record.RateImportMessage;
 import by.volkov.consumer.vm.RateVM;
 import org.mapstruct.Mapper;

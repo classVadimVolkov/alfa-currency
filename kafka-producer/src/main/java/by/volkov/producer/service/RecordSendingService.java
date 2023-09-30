@@ -1,7 +1,9 @@
 package by.volkov.producer.service;
 
 import by.volkov.producer.record.RateExportMessage;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -10,11 +12,13 @@ import java.util.List;
 
 @Slf4j
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Service
 public class RecordSendingService implements SendingService {
 
-    private static final String TOPIC_NAME = "rate";
-    private final KafkaTemplate<String, RateExportMessage> kafkaTemplate;
+    static String TOPIC_NAME = "rate";
+
+    KafkaTemplate<String, RateExportMessage> kafkaTemplate;
 
 
     @Override

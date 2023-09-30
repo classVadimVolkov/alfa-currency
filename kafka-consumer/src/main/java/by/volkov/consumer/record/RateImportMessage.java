@@ -1,20 +1,23 @@
 package by.volkov.consumer.record;
 
-import by.volkov.consumer.entity.Currency;
+import by.volkov.consumer.model.Currency;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 
-
 @Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class RateImportMessage {
-    private Double sellRate;
-    private Currency sellIso;
-    private Integer sellCode;
-    private Double buyRate;
-    private Currency buyIso;
-    private Integer buyCode;
-    private Integer quantity;
-    private String name;
-    private LocalDate date;
+
+    Double sellRate;
+    Currency sellIso;
+    Integer sellCode;
+    Double buyRate;
+    Currency buyIso;
+    Integer buyCode;
+    Integer quantity;
+    String name;
+    LocalDate date;
 }

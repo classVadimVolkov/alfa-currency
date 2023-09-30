@@ -1,6 +1,6 @@
 package by.volkov.useraccount.account.mapper;
 
-import by.volkov.useraccount.account.entity.Account;
+import by.volkov.useraccount.account.model.Account;
 import by.volkov.useraccount.account.vm.AccountVm;
 import org.mapstruct.Mapper;
 
