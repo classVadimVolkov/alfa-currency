@@ -1,7 +1,7 @@
 package by.volkov.producer.endpoint;
 
 import by.volkov.producer.service.SendingService;
-import by.volkov.producer.record.RateExportMessage;
+import by.volkov.producer.model.Rate;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -43,14 +43,14 @@ public class AlfaCurrencyRoute {
     SendingService sendingService;
 
     @Scheduled(fixedRate = 5000)
-    public void sendMessages() throws IOException, InterruptedException {
+    public void pollServer() throws IOException, InterruptedException {
         HttpResponse<String> response = CLIENT.send(REQUEST, HttpResponse.BodyHandlers.ofString());
         JsonNode jsonNode = MAPPER.readTree(response.body());
-        List<RateExportMessage> rateExportMessages = Arrays.asList(MAPPER.readValue(jsonNode.get("rates").toString(), RateExportMessage[].class));
+        List<Rate> rates = Arrays.asList(MAPPER.readValue(jsonNode.get("rates").toString(), Rate[].class));
 
-        log.info(rateExportMessages.toString());
-        if (!rateExportMessages.isEmpty()) {
-            sendingService.sendRecords(rateExportMessages);
+        log.info(rates.toString());
+        if (!rates.isEmpty()) {
+            sendingService.sendRecords(rates);
         }
     }
 }

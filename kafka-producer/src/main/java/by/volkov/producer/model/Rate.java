@@ -1,4 +1,4 @@
-package by.volkov.producer.record;
+package by.volkov.producer.model;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RateExportMessage {
+public class Rate {
 
     Double sellRate;
     Currency sellIso;

@@ -1,6 +1,6 @@
 package by.volkov.producer.config;
 
-import by.volkov.producer.record.RateExportMessage;
+import by.volkov.producer.model.Rate;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -27,7 +27,7 @@ public class KafkaProducerConfig {
     String acks;
 
     @Bean
-    public ProducerFactory<String, RateExportMessage> defaultKafkaProducerFactory() {
+    public ProducerFactory<String, Rate> defaultKafkaProducerFactory() {
         Map<String, Object> configs = new HashMap<>();
         configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         configs.put(ProducerConfig.CLIENT_ID_CONFIG, bootstrapServers);
@@ -39,7 +39,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, RateExportMessage> kafkaTemplate() {
+    public KafkaTemplate<String, Rate> kafkaTemplate() {
         return new KafkaTemplate<>(defaultKafkaProducerFactory());
     }
 }

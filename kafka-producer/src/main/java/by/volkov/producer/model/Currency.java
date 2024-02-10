@@ -1,4 +1,4 @@
-package by.volkov.producer.record;
+package by.volkov.producer.model;
 
 public enum Currency {
     USD,
