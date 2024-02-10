@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.util.StdConverter;
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
@@ -23,6 +24,7 @@ public class Rate {
     Integer quantity;
     String name;
     @JsonDeserialize(converter = LocalDateToLocalDateTimeConverter.class)
+    @EqualsAndHashCode.Exclude
     LocalDateTime date;
 
     private static class LocalDateToLocalDateTimeConverter extends StdConverter<LocalDate, LocalDateTime> {
