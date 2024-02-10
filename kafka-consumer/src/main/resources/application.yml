@@ -1,0 +1,20 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/rates}?ApplicationName=kafka-consumer
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 30
+  jpa:
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: always
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092

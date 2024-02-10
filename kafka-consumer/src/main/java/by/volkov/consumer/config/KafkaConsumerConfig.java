@@ -24,7 +24,7 @@ public class KafkaConsumerConfig {
     static final String GROUP_ID_CONFIG = "rate-group";
     static final String TOPIC_NAME = "rate";
 
-    @Value("${spring.kafka.bootstrap-servers}")
+    @Value("${spring.kafka.consumer.bootstrap-servers}")
     String bootstrapServers;
 
     @Bean
