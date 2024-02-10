@@ -23,10 +23,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
-@Slf4j
+@Component
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@Component
+@Slf4j
 public class AlfaCurrencyRoute {
 
     static HttpClient CLIENT = HttpClient.newHttpClient();
@@ -49,6 +49,8 @@ public class AlfaCurrencyRoute {
         List<RateExportMessage> rateExportMessages = Arrays.asList(MAPPER.readValue(jsonNode.get("rates").toString(), RateExportMessage[].class));
 
         log.info(rateExportMessages.toString());
-        sendingService.sendRecords(rateExportMessages);
+        if (!rateExportMessages.isEmpty()) {
+            sendingService.sendRecords(rateExportMessages);
+        }
     }
 }

@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.9</version>
+        <version>2.7.18</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -18,7 +18,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <spring-boot.version>2.7.9</spring-boot.version>
+        <spring-boot.version>2.7.18</spring-boot.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <postgres.version>42.5.4</postgres.version>
         <maven-surefire-plugin.version>3.0.0-M9</maven-surefire-plugin.version>
