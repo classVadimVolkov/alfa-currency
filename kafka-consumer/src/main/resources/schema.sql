@@ -13,8 +13,6 @@ CREATE TABLE rate
     buy_iso       VARCHAR(10)                                     NOT NULL,
     buy_code      INTEGER                                         NOT NULL,
     quantity      INTEGER                                         NOT NULL,
-    currency_name VARCHAR,
-    rate_date     DATE                                            NOT NULL,
-    created_at    TIMESTAMP(6)        DEFAULT current_timestamp   NOT NULL,
-    updated_at    TIMESTAMP(6)
+    currency_name VARCHAR(255),
+    rate_date     TIMESTAMP(6)                                    NOT NULL
 );

@@ -1,10 +1,14 @@
 package by.volkov.producer.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.util.StdConverter;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -18,5 +22,12 @@ public class Rate {
     Integer buyCode;
     Integer quantity;
     String name;
-    LocalDate date;
+    @JsonDeserialize(converter = LocalDateToLocalDateTimeConverter.class)
+    LocalDateTime date;
+
+    private static class LocalDateToLocalDateTimeConverter extends StdConverter<LocalDate, LocalDateTime> {
+        public LocalDateTime convert(LocalDate localDate) {
+            return localDate.atTime(LocalTime.now());
+        }
+    }
 }

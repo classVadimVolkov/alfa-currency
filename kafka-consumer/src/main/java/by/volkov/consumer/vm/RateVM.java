@@ -5,7 +5,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -20,5 +20,5 @@ public class RateVM {
     Integer buyCode;
     Integer quantity;
     String currencyName;
-    LocalDate rateDate;
+    LocalDateTime rateDate;
 }

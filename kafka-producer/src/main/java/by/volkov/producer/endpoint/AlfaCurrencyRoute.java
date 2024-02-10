@@ -1,7 +1,8 @@
 package by.volkov.producer.endpoint;
 
-import by.volkov.producer.service.SendingService;
 import by.volkov.producer.model.Rate;
+import by.volkov.producer.service.SendingService;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -20,7 +21,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.List;
 
 @Component
@@ -46,7 +46,8 @@ public class AlfaCurrencyRoute {
     public void pollServer() throws IOException, InterruptedException {
         HttpResponse<String> response = CLIENT.send(REQUEST, HttpResponse.BodyHandlers.ofString());
         JsonNode jsonNode = MAPPER.readTree(response.body());
-        List<Rate> rates = Arrays.asList(MAPPER.readValue(jsonNode.get("rates").toString(), Rate[].class));
+        List<Rate> rates = MAPPER.readValue(jsonNode.get("rates").toString(), new TypeReference<>() {
+        });
 
         log.info(rates.toString());
         if (!rates.isEmpty()) {
