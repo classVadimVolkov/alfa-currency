@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -15,10 +16,10 @@ import java.time.LocalTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Rate {
 
-    Double sellRate;
+    BigDecimal sellRate;
     Currency sellIso;
     Integer sellCode;
-    Double buyRate;
+    BigDecimal buyRate;
     Currency buyIso;
     Integer buyCode;
     Integer quantity;

@@ -5,16 +5,17 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class RateImportMessage {
 
-    Double sellRate;
+    BigDecimal sellRate;
     Currency sellIso;
     Integer sellCode;
-    Double buyRate;
+    BigDecimal buyRate;
     Currency buyIso;
     Integer buyCode;
     Integer quantity;

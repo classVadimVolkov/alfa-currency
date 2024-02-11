@@ -11,7 +11,7 @@ spring:
       maximum-pool-size: 30
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
   sql:
     init:
       mode: always
