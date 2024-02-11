@@ -13,35 +13,32 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 
-@Slf4j
-@RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Service
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@Slf4j
 public class RecordConsumerService implements ConsumerService {
+    static Duration timeout = Duration.ofSeconds(5);
 
-    static boolean isOpen = true;
-    static final Duration timeout = Duration.ofSeconds(5);
-
-    final KafkaConsumerConfig consumerConfig;
-    final RateService rateService;
+    KafkaConsumerConfig consumerConfig;
+    RateService rateService;
 
     @EventListener(ApplicationReadyEvent.class)
     @Override
     public void receiveRecords() {
         try (var kafkaConsumer = consumerConfig.kafkaConsumer()) {
-            while (isOpen) {
                 log.info("Receiving records...");
                 ConsumerRecords<String, RateImportMessage> records = kafkaConsumer.poll(timeout);
                 records.forEach(record -> {
-                    log.info("offset=" + record.offset());
+                    log.info("topic=" + record.topic());
                     log.info("partition=" + record.partition());
+                    log.info("offset=" + record.offset());
                     log.info("key=" + record.key());
                     log.info("value=" + record.value());
                     log.info("Message has been received");
 
                     rateService.save(record.value());
                 });
-           }
         }
     }
 }
