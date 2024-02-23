@@ -30,7 +30,7 @@ public class KafkaProducerConfig {
     public ProducerFactory<String, Rate> defaultKafkaProducerFactory() {
         Map<String, Object> configs = new HashMap<>();
         configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        configs.put(ProducerConfig.CLIENT_ID_CONFIG, bootstrapServers);
+        configs.put(ProducerConfig.CLIENT_ID_CONFIG, "kafka-producer");
         configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         configs.put(ProducerConfig.ACKS_CONFIG, acks);
